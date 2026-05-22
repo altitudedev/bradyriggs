@@ -1,0 +1,217 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Brady Riggs palette — pure white canvas, deep-gold signature,
+   * forest green for the course, clay-red for emphasis. */
+  --background:   #ffffff;     /* pure white */
+  --foreground:   #1a1814;     /* deep warm black */
+  --card:         #ffffff;
+  --card-foreground: #1a1814;
+  --popover:      #ffffff;
+  --popover-foreground: #1a1814;
+  --primary:      #c24e3a;     /* clay/redgoat — Brady's brand color, used on all CTAs */
+  --primary-foreground: #ffffff;
+  --primary-deep: #9a3a2a;
+  --secondary:    #2d3e2f;     /* forest green (golf course) */
+  --secondary-foreground: #ffffff;
+  --muted:        #f6f6f4;
+  --muted-foreground: #56524a;
+  --accent:       #8b3a2c;     /* deep clay red — accent only */
+  --accent-foreground: #ffffff;
+  --destructive:  #b32f25;
+  --destructive-foreground: #ffffff;
+  --border:       #e8e6df;
+  --input:        #e8e6df;
+  --ring:         #c24e3a;
+  --radius:       0.5rem;
+
+  /* Brand-named aliases — all white-theme */
+  --linen:        #ffffff;     /* pure white now (was beige) */
+  --linen-deep:   #f7f7f4;     /* light off-white for alternating sections */
+  --paper:        #ffffff;
+  --ink:          #1a1814;
+  --ink-soft:     #3d352a;
+  --gold:         #b8924a;
+  --gold-soft:    #d4b87a;
+  --gold-deep:    #8b6c33;
+  --green:        #2d3e2f;
+  --green-deep:   #1a2a1c;
+  --clay:         #c24e3a;
+  --clay-soft:    #d8624c;
+  --clay-deep:    #9a3a2a;
+  --rule:         #e8e6df;
+  --rule-soft:    #f3f1ea;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-mono: var(--font-jbm), ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-linen:      var(--linen);
+  --color-linen-deep: var(--linen-deep);
+  --color-paper:      var(--paper);
+  --color-ink:        var(--ink);
+  --color-ink-soft:   var(--ink-soft);
+  --color-gold:       var(--gold);
+  --color-gold-soft:  var(--gold-soft);
+  --color-gold-deep:  var(--gold-deep);
+  --color-green:      var(--green);
+  --color-green-deep: var(--green-deep);
+  --color-clay:       var(--clay);
+  --color-clay-soft:  var(--clay-soft);
+  --color-clay-deep:  var(--clay-deep);
+  --color-primary-deep: var(--primary-deep);
+  --color-rule:       var(--rule);
+  --color-rule-soft:  var(--rule-soft);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * { border-color: var(--border); }
+  html {
+    background-color: var(--background);
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: 'ss01', 'ss02';
+    overflow-x: clip;
+  }
+  ::selection {
+    background-color: var(--gold);
+    color: var(--linen);
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  /* Editorial display headings */
+  .display {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    font-optical-sizing: auto;
+  }
+
+  /* ─────────  DIAGONAL LINE PATTERNS  ─────────
+   *
+   * Brady's signature decorative motif — diagonal stripes on the
+   * accent. Multiple intensities + animated variants for drama. */
+
+  /* Static diagonals — subtle gold lines */
+  .diag-gold {
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(184, 146, 74, 0.10) 0,
+      rgba(184, 146, 74, 0.10) 1px,
+      transparent 1px,
+      transparent 24px
+    );
+  }
+  .diag-gold-bold {
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(184, 146, 74, 0.22) 0,
+      rgba(184, 146, 74, 0.22) 1.5px,
+      transparent 1.5px,
+      transparent 18px
+    );
+  }
+  .diag-green {
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(45, 62, 47, 0.08) 0,
+      rgba(45, 62, 47, 0.08) 1px,
+      transparent 1px,
+      transparent 22px
+    );
+  }
+  .diag-ink {
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(26, 24, 20, 0.06) 0,
+      rgba(26, 24, 20, 0.06) 1px,
+      transparent 1px,
+      transparent 22px
+    );
+  }
+  /* Reverse direction (45° instead of 135°) */
+  .diag-gold-r {
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(184, 146, 74, 0.10) 0,
+      rgba(184, 146, 74, 0.10) 1px,
+      transparent 1px,
+      transparent 24px
+    );
+  }
+
+  /* Animated diagonal — slides slowly across */
+  @keyframes diag-drift {
+    from { background-position: 0 0; }
+    to   { background-position: 240px 240px; }
+  }
+  .animate-diag {
+    animation: diag-drift 12s linear infinite;
+  }
+  @keyframes diag-drift-reverse {
+    from { background-position: 240px 0; }
+    to   { background-position: 0 240px; }
+  }
+  .animate-diag-r {
+    animation: diag-drift-reverse 14s linear infinite;
+  }
+
+  /* Marquee for press strip */
+  @keyframes marquee-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee-left 40s linear infinite;
+  }
+
+  /* Slow drift orbs */
+  @keyframes drift {
+    0%, 100% { transform: translate3d(0,0,0) scale(1); }
+    50%      { transform: translate3d(10px, -12px, 0) scale(1.04); }
+  }
+  .animate-drift { animation: drift 11s ease-in-out infinite; }
+
+  @keyframes drift-slow {
+    0%, 100% { transform: translate3d(0,0,0) scale(1); }
+    50%      { transform: translate3d(-14px, 10px, 0) scale(0.97); }
+  }
+  .animate-drift-slow { animation: drift-slow 16s ease-in-out infinite; }
+}
