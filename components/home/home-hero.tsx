@@ -16,10 +16,10 @@ export function HomeHero() {
 
   return (
     <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-ink">
-      {/* Banner image — same one from bradyriggsgolf.com */}
+      {/* Banner image — golf action shot */}
       <Image
-        src="/images/hero-banner.png"
-        alt="Brady Riggs coaching on the lesson tee at PGA WEST"
+        src="/images/hero-banner.jpg"
+        alt="Brady Riggs demonstrating golf swing technique"
         fill
         priority
         sizes="100vw"
